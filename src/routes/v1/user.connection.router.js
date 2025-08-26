@@ -1,0 +1,11 @@
+const express=require("express");
+const {getReceivedRequests}=require("../../controllers/user.connectionRequest");
+const {getConnections}=require("../../controllers/user.connectionRequest");
+const {getFeed}=require("../../controllers/user.connectionRequest");
+const user = require("../../models/user");
+const {userAuth}=require("../../utils/auth");
+const userConnection=express.Router();
+userConnection.get('/requests/received',userAuth,getReceivedRequests);
+userConnection.get('/connections',userAuth,getConnections);
+userConnection.get('/feed',userAuth,getFeed);
+module.exports=userConnection;
